@@ -157,7 +157,7 @@ public class Pembayaran extends Transaction{
       Screen screen = getScreen(); // get screen reference
 
          // display the withdrawal menu
-         screen.displayMessageLine("\nMenu Pembayaran :");
+         screen.displayMessageLine("\nPayment Menu :");
          screen.displayMessageLine("1 - Tiket Kereta");
          screen.displayMessageLine("2 - OVO");
          screen.displayMessageLine("3 - Listrik");
