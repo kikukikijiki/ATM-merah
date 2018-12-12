@@ -17,7 +17,7 @@ public class Transfer extends Transaction{
         System.out.print("Masukan Nomer Akun yang akan ditransfer : ");
         numberReceiver = keypad.getInput();
         if(super.getBankDatabase().getAccount(numberReceiver) == null){
-            System.out.print("Akun Tidak Ada");
+            System.out.print("Account Doesn't Exist");
         }else{
             double amount = displayTransfer();
             double availbalance = super.getBankDatabase().getAvailableBalance(super.getAccountNumber());
