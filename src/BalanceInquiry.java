@@ -36,6 +36,7 @@ public class BalanceInquiry extends Transaction {
             screen.displayDollarAmount(availableBalance);
             screen.displayMessage("\n - Total balance:     ");
             screen.displayDollarAmount(totalBalance);
+            screen.displayMessageLine("");
         }      
         else if (input == IDR){
             screen.displayMessage(" - Saldo Tersedia "); 
