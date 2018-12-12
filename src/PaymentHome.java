@@ -20,16 +20,20 @@ public class PaymentHome extends Transaction{
         screen.displayDollarAmount(super.getBankDatabase().getAvailableBalance(userAccount));
         screen.displayMessage("\nBerapa yang akan anda Bayar : $");
         amount = keypad.getInput();
+        if(amount<0){
+             screen.displayMessage("\nThe value must not be smaller then 0\n");
+        }else{
         if(amount == 0.0){
-            screen.displayMessage("\nTransaksi gagal");
+            screen.displayMessage("\nTransaction failed\n");
         }else if(super.getBankDatabase().getAvailableBalance(userAccount) >= amount){
             if(amount > paymentDatabase.getCreditHome(userAccount)){
-                screen.displayMessage("\nPembayaran hanya bisa dilakukan sejumlah atau lebihkecil dari jumlah hutang");
+                screen.displayMessage("\nPayments can only be made in a number or less than the amount of debt");
             }else{
                 paymentDatabase.creditCHome(userAccount, amount);
                 super.getBankDatabase().debit(userAccount, amount);
-                screen.displayMessage("\nTransaksi Berhasil\n");
+                screen.displayMessage("\nTransaction Success\n");
             }
-        }else screen.displayMessage("\nUang melebihi batas yang dapat digunakan");
+        }else screen.displayMessage("\nThe value exceeds the limit\n");
     }
+}
 }

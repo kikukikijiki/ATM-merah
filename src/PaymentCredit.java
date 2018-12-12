@@ -14,25 +14,28 @@ public class PaymentCredit extends Transaction{
     @Override
     public void execute() {
         Screen screen = super.getScreen();
-        screen.displayMessage("\nJumlah Hutang Anda : ");
+        screen.displayMessage("\nYour debt amount : ");
         screen.displayDollarAmount(paymentDatabase.getCreditCard(userAccount));
-        screen.displayMessage("\nYang bisa anda gunakan : ");
+        screen.displayMessage("\nWhat you can pay : ");
         screen.displayDollarAmount(super.getBankDatabase().getAvailableBalance(userAccount));
-        screen.displayMessage("\nBerapa yang akan anda Bayar : $");
-        amount = keypad.getInput();  
+        screen.displayMessage("\nWhat will be used to pay : $");
+        amount = keypad.getInput(); 
+        if(amount < 0){
+        screen.displayMessage("\nThe value must not be smaller then 0\n");
+        }else{
         if(amount == 0.0){
-            screen.displayMessage("\nTransaksi gagal");
+            screen.displayMessage("\nTransaction failed\n");
         }else if(super.getBankDatabase().getAvailableBalance(userAccount) >= amount){
             if(amount > paymentDatabase.getCreditCard(userAccount)){
-                screen.displayMessage("\nPembayaran hanya bisa dilakukan sejumlah atau lebihkecil dari jumlah hutang");
+                screen.displayMessage("\nPayments can only be made in a number or less than the amount of debt\n");
             }else{
                 paymentDatabase.creditCCard(userAccount, amount);
                 super.getBankDatabase().debit(userAccount, amount);
-                screen.displayMessage("\nTransaksi Berhasil\n");
+                screen.displayMessage("\nTransaction Success\n");
             }
-        }else screen.displayMessage("\nUang melebihi batas yang dapat digunakan");
-    }
+        }else screen.displayMessage("\nThe value exceeds the limit\n");
     
- 
+        }
+    }
    
 }

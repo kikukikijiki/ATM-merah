@@ -11,9 +11,9 @@ public class PaymentInquiry extends Transaction{
     @Override
     public void execute() {
         Screen screen = getScreen();
-        screen.displayMessage("\nHutang Kartu Kredit : ");
+        screen.displayMessage("\nCredit Card Debt : ");
         screen.displayDollarAmount(paymentDatabase.getCreditCard(userAccount));
-        screen.displayMessage("\nHutnag Kredit Rumah : ");
+        screen.displayMessage("\nHome Loan Debt : ");
         screen.displayDollarAmount(paymentDatabase.getCreditHome(userAccount));
         screen.displayMessageLine("");     
     }
