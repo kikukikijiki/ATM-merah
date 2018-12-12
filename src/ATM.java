@@ -126,7 +126,7 @@ public class ATM implements iInputChoice{
         screen.displayMessageLine("11 - Pulsa");
         screen.displayMessageLine("12 - Other Transaction");
         screen.displayMessageLine("13 - Help");
-        screen.displayMessageLine("14 - Exit\n");
+        screen.displayMessageLine("14 - Keluar\n");
         screen.displayMessage("Enter a choice: ");
         return keypad.getInput(); // return user's selection
     }
