@@ -14,11 +14,11 @@ public class PaymentHome extends Transaction{
     @Override
     public void execute() {
         Screen screen = super.getScreen();
-        screen.displayMessage("\nJumlah Hutang Anda : ");
+        screen.displayMessage("\nYour debt amount : ");
         screen.displayDollarAmount(paymentDatabase.getCreditHome(userAccount));
-        screen.displayMessage("\nYang bisa anda gunakan : ");
+        screen.displayMessage("\nWhat you can pay : ");
         screen.displayDollarAmount(super.getBankDatabase().getAvailableBalance(userAccount));
-        screen.displayMessage("\nBerapa yang akan anda Bayar : $");
+        screen.displayMessage("\nWhat will be used to pay : $");
         amount = keypad.getInput();
         if(amount<0){
              screen.displayMessage("\nThe value must not be smaller then 0\n");
