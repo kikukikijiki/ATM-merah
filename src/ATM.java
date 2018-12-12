@@ -43,9 +43,18 @@ public class ATM implements iInputChoice{
     private void authenticateUser() {
         int count = 0;
         while(!userAuthenticated && count < 3){
-            screen.displayMessage("\nPlease enter your account number: ");
-        
-            int accountNumber = keypad.getInput(); // input account number
+            /*INI UNTUK VERIFIKASI APAKAH INTEGER ATAU BUKAN*/
+            int accountNumber = Integer.MIN_VALUE;
+            while(accountNumber == Integer.MIN_VALUE){
+                screen.displayMessage("\nPlease enter your account number: ");
+                if(keypad.getKeypad().hasNextInt()){
+                    accountNumber = keypad.getKeypad().nextInt(); // input account number                    
+                }else{
+                    keypad.getKeypad().next();
+                }
+            }
+            /*END*/
+            
             screen.displayMessage("\nEnter your PIN: "); // prompt for PIN
             int pin = keypad.getInput(); // input PIN
 
