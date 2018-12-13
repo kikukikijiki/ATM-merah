@@ -13,14 +13,14 @@ public class Pembayaran extends Transaction{
     public void execute() {
        amount = displayMenuPembayaran();
        if (amount == CANCELED){
-           super.getScreen().displayMessageLine("Canceling transaction...\n");
-       } else{
-            if(super.getBankDatabase().getAvailableBalance(super.getAccountNumber()) >= amount){    
+            super.getScreen().displayMessageLine("Canceling transaction...\n");
+        } else{
+               if(super.getBankDatabase().getAvailableBalance(super.getAccountNumber()) >= amount){    
                     super.getBankDatabase().debit(super.getAccountNumber(), amount); 
-            }else
-                System.out.println("\nBalance not enough.");
-        } 
-    }
+                }else
+                    System.out.println("\nBalance not enough.");
+                }
+        }
     
     private int tiketKereta(){
         Screen screen = getScreen(); // get reference to screen
@@ -42,14 +42,19 @@ public class Pembayaran extends Transaction{
              // check whether the user canceled or entered a valid amount
              if (input == CANCELED || input / 100 > super.getBankDatabase().getAvailableBalance(super.getAccountNumber())) {
                 return CANCELED;
-             }
-             else {
-                screen.displayMessage("\nAnda berhasil melakukan pembayaran tiket kereta.\n"
-                     + "NOTE: Tiket yang sudah dibayarkan tidak dapat ditukarkan.");
+             }else if(input < 0){
+                        super.getScreen().displayMessageLine("\nThe value must not be smaller then 0\n");
+                        return CANCELED;
+                    }else if(input == 0.0){
+                            super.getScreen().displayMessageLine("\nTransaction failed\n");
+                            return CANCELED;
+                        }else {
+                            screen.displayMessage("\nAnda berhasil melakukan pembayaran tiket kereta.\n"
+                                 + "NOTE: Tiket yang sudah dibayarkan tidak dapat ditukarkan.");
 
-                return (int) (input / 100); // return dollar amount
-             }
-}
+                            return (int) (input / 100); // return dollar amount
+                         }
+    }
     
     private int OVO(){
         Screen screen = getScreen(); // get reference to screen
