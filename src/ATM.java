@@ -29,7 +29,7 @@ public class ATM implements iInputChoice{
         while (true) {
             // loop while user is not yet authenticated
             while (!userAuthenticated) {
-                screen.displayMessageLine("\nWelcome!");       
+                screen.displayMessageLine("\nWelcome!\n");       
                 authenticateUser(); // authenticate user
             } 
             performTransactions(); // user is now authenticated
@@ -45,19 +45,27 @@ public class ATM implements iInputChoice{
         while(!userAuthenticated && count < 3){
             /*INI UNTUK VERIFIKASI APAKAH INTEGER ATAU BUKAN*/
             int accountNumber = Integer.MIN_VALUE;
+            int pin = Integer.MIN_VALUE;
             while(accountNumber == Integer.MIN_VALUE){
-                screen.displayMessage("\nPlease enter your account number: ");
+                screen.displayMessage("Please enter your account number: ");
                 if(keypad.getKeypad().hasNextInt()){
                     accountNumber = keypad.getKeypad().nextInt(); // input account number                    
                 }else{
-                    keypad.getKeypad().next();
+                    keypad.getKeypad().nextLine();
+                    screen.displayMessageLine("\nInvalid Input for Account Number\n");
                 }
             }
             /*END*/
+            while(pin == Integer.MIN_VALUE){
+                screen.displayMessage("\nEnter your PIN: "); // prompt for PIN
+            if(keypad.getKeypad().hasNextInt()){
+                    pin = keypad.getKeypad().nextInt(); // input account number                    
+                }else{
+                    keypad.getKeypad().nextLine();
+                    screen.displayMessageLine("\nInvalid Input for PIN\n");
+                }
+            }
             
-            screen.displayMessage("\nEnter your PIN: "); // prompt for PIN
-            int pin = keypad.getInput(); // input PIN
-
             // set userAuthenticated to boolean value returned by database
             userAuthenticated = bankDatabase.authenticateUser(accountNumber, pin);
 
@@ -67,7 +75,7 @@ public class ATM implements iInputChoice{
             } 
             else {
                count++;
-               screen.displayMessageLine("Invalid account number or PIN. Please try again.");
+               screen.displayMessageLine("\nInvalid account number or PIN. Please try again.\n");
             }
         }
         if(count > 2){
@@ -86,7 +94,8 @@ public class ATM implements iInputChoice{
         // loop while user has not chosen option to exit system
         while (!userExited) {
             // show main menu and get user selection
-            System.out.println("Current Date : "+ time.cal.get(Calendar.DATE) + "/" + (time.cal.get(Calendar.MONTH)+1 ) + "/" + time.cal.get(Calendar.YEAR));
+            screen.displayMessageLine("\nLogin Successful");
+            screen.displayMessageLine("Current Date : "+ time.cal.get(Calendar.DATE) + "/" + (time.cal.get(Calendar.MONTH)+1 ) + "/" + time.cal.get(Calendar.YEAR));
             int mainMenuSelection = displayMainMenu();
 
             // decide how to proceed based on user's menu selection
