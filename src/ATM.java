@@ -146,14 +146,14 @@ public class ATM implements iInputChoice{
         screen.displayMessageLine("13 - Help");
         screen.displayMessageLine("14 - Exit\n");
         int menu = Integer.MIN_VALUE;
-            while(menu == Integer.MIN_VALUE){
-                screen.displayMessage("Enter a choice: ");
-                if(keypad.getKeypad().hasNextInt()){
-                    return keypad.getInput();
-                }else{
-                    keypad.getKeypad().nextLine();
-                    screen.displayMessageLine("\nInvalid Input for Menu\n");
-                }
+        while(menu == Integer.MIN_VALUE){
+            screen.displayMessage("Enter a choice: ");
+            if(keypad.getKeypad().hasNextInt()){
+                return keypad.getInput();
+            }else{
+                keypad.getKeypad().nextLine();
+                screen.displayMessageLine("\nInvalid Input for Menu\n");
+            }
         }
         return 0;
     }
