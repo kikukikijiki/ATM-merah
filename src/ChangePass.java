@@ -13,28 +13,53 @@ public class ChangePass extends Transaction{
     public void execute() {
         Account acc = super.getBankDatabase().getAccount(super.getAccountNumber());
         while(!cek){
-            super.getScreen().displayMessage("Insert Your Old Password : ");
-            oldPass = keypad.getInput();
+            int oldPIN = Integer.MIN_VALUE;
+            while(oldPIN == Integer.MIN_VALUE){
+                super.getScreen().displayMessage("Please enter your old PIN: ");
+                if(keypad.getKeypad().hasNextInt()){
+                    oldPIN = keypad.getKeypad().nextInt(); // input account number                    
+                }else{
+                    keypad.getKeypad().nextLine();
+                    super.getScreen().displayMessageLine("\nInvalid Input for Old PIN\n");
+                }
+            }
             if(oldPass == acc.getThePin()){
                 cek=true;
             }else{
-                super.getScreen().displayMessageLine("Our Password Not Match, Retype your password...");
+                super.getScreen().displayMessageLine("Your Password Not Match, Retype your password...");
             }
         }
         cek = false;
         while(!cek){
-            super.getScreen().displayMessage("Insert Your New Password : ");
-            newPass = keypad.getInput();
+            int newPIN = Integer.MIN_VALUE;
+            while(newPIN == Integer.MIN_VALUE){
+                super.getScreen().displayMessage("Please enter your new PIN: ");
+                if(keypad.getKeypad().hasNextInt()){
+                    newPIN = keypad.getKeypad().nextInt(); // input account number                    
+                }else{
+                    keypad.getKeypad().nextLine();
+                    super.getScreen().displayMessageLine("\nInvalid Input for New PIN\n");
+                }
+            }
             if(newPass != oldPass){
-                super.getScreen().displayMessage("Confirm Your New Password : ");
-                if(keypad.getInput() == newPass){
+                int verPIN = Integer.MIN_VALUE;
+                while(verPIN == Integer.MIN_VALUE){
+                    super.getScreen().displayMessage("Confirm your new PIN: ");
+                    if(keypad.getKeypad().hasNextInt()){
+                        verPIN = keypad.getKeypad().nextInt(); // input account number                    
+                    }else{
+                        keypad.getKeypad().nextLine();
+                        super.getScreen().displayMessageLine("\nInvalid Input for PIN\n");
+                    }
+                }
+                if(verPIN == newPass){
                     super.getBankDatabase().ChangePass(super.getAccountNumber(), newPass);
                     cek = true;
                 }else{
-                    super.getScreen().displayMessageLine("Password not match, Retype Your Password..");
+                    super.getScreen().displayMessageLine("PIN not match, Retype Your PIN..");
                 }
             }else{
-                super.getScreen().displayMessageLine("Dont Use The Old Password");
+                super.getScreen().displayMessageLine("Don't Use The Old PIN");
             }
         }
     }

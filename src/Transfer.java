@@ -14,8 +14,16 @@ public class Transfer extends Transaction{
 
     @Override
     public void execute() {
-        System.out.print("Input Account Number to be transferred : ");
-        numberReceiver = keypad.getInput();
+        int numberReceiver = Integer.MIN_VALUE;
+            while(numberReceiver == Integer.MIN_VALUE || numberReceiver < 0){
+               getScreen().displayMessage("\nChoose Account Number Receiver: ");
+               if(keypad.getKeypad().hasNextInt()){
+                   numberReceiver = keypad.getKeypad().nextInt(); // input account number                    
+               }else{
+                   keypad.getKeypad().nextLine();
+                   getScreen().displayMessageLine("\nInvalid Input\n");
+               }
+        }
         if(super.getBankDatabase().getAccount(numberReceiver) == null){
             System.out.print("Account Doesn't Exist");
         }else{
@@ -37,16 +45,34 @@ public class Transfer extends Transaction{
         }  
     }
     
-    private int displayTransfer(){
-        System.out.print("Masukan Jumlah Transfer : ");
-        return  keypad.getInput();
+    private double displayTransfer(){
+        int input = Integer.MIN_VALUE;
+            while(input == Integer.MIN_VALUE || input < 0 || input > 6){
+               getScreen().displayMessage("\nChoose Transfer Amount: ");
+               if(keypad.getKeypad().hasNextInt()){
+                   input = keypad.getKeypad().nextInt(); // input account number                    
+               }else{
+                   keypad.getKeypad().nextLine();
+                   getScreen().displayMessageLine("\nInvalid Input\n");
+               }
+           }
+        return (double) input;
     }
     
     public void ceksendnote(){
         super.getScreen().displayMessageLine("Do you want add Note?");
         super.getScreen().displayMessageLine("1. Yes");
         super.getScreen().displayMessageLine("2. No");
-        super.getScreen().displayMessage("Input Choice : ");
+        int input = Integer.MIN_VALUE;
+        while(input == Integer.MIN_VALUE || input < 1 || input > 2){
+            super.getScreen().displayMessage("Input Choice : ");
+            if(keypad.getKeypad().hasNextInt()){
+                input = keypad.getKeypad().nextInt(); // input account number                    
+            }else{
+                keypad.getKeypad().nextLine();
+                getScreen().displayMessageLine("\nInvalid Input\n");
+            }
+        }
         if(keypad.getInput() == 1){
             sendnote();
         }else{

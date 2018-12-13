@@ -58,7 +58,7 @@ public class ATM implements iInputChoice{
             /*END*/
             while(pin == Integer.MIN_VALUE){
                 screen.displayMessage("\nEnter your PIN: "); // prompt for PIN
-            if(keypad.getKeypad().hasNextInt()){
+                if(keypad.getKeypad().hasNextInt()){
                     pin = keypad.getKeypad().nextInt(); // input account number                    
                 }else{
                     keypad.getKeypad().nextLine();
@@ -135,7 +135,7 @@ public class ATM implements iInputChoice{
         screen.displayMessageLine("2 - Withdraw cash");
         screen.displayMessageLine("3 - Deposit funds");
         screen.displayMessageLine("4 - Transfer");
-        screen.displayMessageLine("5 - Change Password");
+        screen.displayMessageLine("5 - Change PIN");
         screen.displayMessageLine("6 - Inbox");
         screen.displayMessageLine("7 - Payment Credit Card");
         screen.displayMessageLine("8 - Payment Credit Home");

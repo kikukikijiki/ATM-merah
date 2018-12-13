@@ -58,10 +58,17 @@ public class Withdrawal extends Transaction {
             screen.displayMessageLine("4 - $100");
             screen.displayMessageLine("5 - $200");
             screen.displayMessageLine("6 - Cancel transaction");
-            screen.displayMessage("\nChoose a withdrawal amount: ");
-
-            int input = keypad.getInput(); // get user input through keypad
-
+            
+            int input = Integer.MIN_VALUE;
+            while(input == Integer.MIN_VALUE || input < 0 || input > 6){
+               screen.displayMessage("\nChoose Input: ");
+               if(keypad.getKeypad().hasNextInt()){
+                   input = keypad.getKeypad().nextInt(); // input account number                    
+               }else{
+                   keypad.getKeypad().nextLine();
+                   screen.displayMessageLine("\nInvalid Input\n");
+               }
+            }
             // determine how to proceed based on the input value
             switch (input) {
                 case 1:  

@@ -28,10 +28,17 @@ public class Pembayaran extends Transaction{
 //        accountNumbert = 0001; // input account number
         
         Account akun = super.getBankDatabase().getAccount(0001);
-            screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+            double input = Integer.MIN_VALUE;
+             while(input == Integer.MIN_VALUE || input < 0){
+               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
                 "CENTS (or 0 to cancel): ");
-             double input = keypad.getInput(); // receive input of deposit amount
-             
+               if(keypad.getKeypad().hasNextInt()){
+                   input = keypad.getKeypad().nextInt(); // input account number                    
+               }else{
+                   keypad.getKeypad().nextLine();
+                   screen.displayMessageLine("\nInvalid Input\n");
+               }
+            }
              // check whether the user canceled or entered a valid amount
              if (input == CANCELED || input / 100 > super.getBankDatabase().getAvailableBalance(super.getAccountNumber())) {
                 return CANCELED;
@@ -50,10 +57,17 @@ public class Pembayaran extends Transaction{
 //        accountNumbert = 0001; // input account number
         
         Account akun = super.getBankDatabase().getAccount(0002);
-            screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+            double input = Integer.MIN_VALUE;
+             while(input == Integer.MIN_VALUE || input < 0){
+               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
                 "CENTS (or 0 to cancel): ");
-             double input = keypad.getInput(); // receive input of deposit amount
-             
+               if(keypad.getKeypad().hasNextInt()){
+                   input = keypad.getKeypad().nextInt(); // input account number                    
+               }else{
+                   keypad.getKeypad().nextLine();
+                   screen.displayMessageLine("\nInvalid Input\n");
+               }
+            }
              // check whether the user canceled or entered a valid amount
              if (input == CANCELED || input/100 > super.getBankDatabase().getAvailableBalance(super.getAccountNumber())) {
                 return CANCELED;
@@ -72,10 +86,17 @@ public class Pembayaran extends Transaction{
 //        accountNumbert = 0001; // input account number
         
         Account akun = super.getBankDatabase().getAccount(0003);
-            screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+            double input = Integer.MIN_VALUE;
+             while(input == Integer.MIN_VALUE || input < 0){
+               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
                 "CENTS (or 0 to cancel): ");
-             double input = keypad.getInput(); // receive input of deposit amount
-             
+               if(keypad.getKeypad().hasNextInt()){
+                   input = keypad.getKeypad().nextInt(); // input account number                    
+               }else{
+                   keypad.getKeypad().nextLine();
+                   screen.displayMessageLine("\nInvalid Input\n");
+               }
+            }
              // check whether the user canceled or entered a valid amount
              if (input == CANCELED || input/100 > super.getBankDatabase().getAvailableBalance(super.getAccountNumber())) {
                 return CANCELED;
@@ -93,10 +114,17 @@ public class Pembayaran extends Transaction{
 //        accountNumbert = 0001; // input account number
         
         Account akun = super.getBankDatabase().getAccount(0004);
-            screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+            double input = Integer.MIN_VALUE;
+             while(input == Integer.MIN_VALUE || input < 0){
+               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
                 "CENTS (or 0 to cancel): ");
-             double input = keypad.getInput(); // receive input of deposit amount
-             
+               if(keypad.getKeypad().hasNextInt()){
+                   input = keypad.getKeypad().nextInt(); // input account number                    
+               }else{
+                   keypad.getKeypad().nextLine();
+                   screen.displayMessageLine("\nInvalid Input\n");
+               }
+            }
              // check whether the user canceled or entered a valid amount
              if (input == CANCELED || input/100 > super.getBankDatabase().getAvailableBalance(super.getAccountNumber())) {
                 return CANCELED;
@@ -114,10 +142,17 @@ public class Pembayaran extends Transaction{
 //        accountNumbert = 0001; // input account number
         
         Account akun = super.getBankDatabase().getAccount(0004);
-            screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+            double input = Integer.MIN_VALUE;
+             while(input == Integer.MIN_VALUE || input < 0){
+               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
                 "CENTS (or 0 to cancel): ");
-             double input = keypad.getInput(); // receive input of deposit amount
-             
+               if(keypad.getKeypad().hasNextInt()){
+                   input = keypad.getKeypad().nextInt(); // input account number                    
+               }else{
+                   keypad.getKeypad().nextLine();
+                   screen.displayMessageLine("\nInvalid Input\n");
+               }
+            }
              // check whether the user canceled or entered a valid amount
              if (input == CANCELED || input/100 > super.getBankDatabase().getAvailableBalance(super.getAccountNumber())) {
                 return CANCELED;
@@ -134,10 +169,18 @@ public class Pembayaran extends Transaction{
 //        accountNumbert = 0001; // input account number
         
         Account akun = super.getBankDatabase().getAccount(0004);
-            screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+            
+             double input = Integer.MIN_VALUE;
+             while(input == Integer.MIN_VALUE || input < 0){
+               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
                 "CENTS (or 0 to cancel): ");
-             double input = keypad.getInput(); // receive input of deposit amount
-             
+               if(keypad.getKeypad().hasNextInt()){
+                   input = keypad.getKeypad().nextInt(); // input account number                    
+               }else{
+                   keypad.getKeypad().nextLine();
+                   screen.displayMessageLine("\nInvalid Input\n");
+               }
+            }
              // check whether the user canceled or entered a valid amount
              if (input == CANCELED || input/100 > super.getBankDatabase().getAvailableBalance(super.getAccountNumber())) {
                 return CANCELED;
@@ -165,10 +208,17 @@ public class Pembayaran extends Transaction{
          screen.displayMessageLine("5 - Asuransi");
          screen.displayMessageLine("6 - Hotel");
          screen.displayMessageLine("0 - Cancel transaction");
-         screen.displayMessage("\nPilihan Pembayaran :");
-
-         int input = keypad.getInput(); // get user input through keypad
-
+         
+         int input = Integer.MIN_VALUE;
+         while(input == Integer.MIN_VALUE || input < 0 || input > 7){
+            screen.displayMessage("\nChoose Input: ");
+            if(keypad.getKeypad().hasNextInt()){
+                input = keypad.getKeypad().nextInt(); // input account number                    
+            }else{
+                keypad.getKeypad().nextLine();
+                screen.displayMessageLine("\nInvalid Input\n");
+            }
+        }
          // determine how to proceed based on the input value
          switch (input) {
             case 1: userChoice = tiketKereta(); break;

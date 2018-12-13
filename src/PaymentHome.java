@@ -19,10 +19,16 @@ public class PaymentHome extends Transaction{
         screen.displayMessage("\nWhat you can pay : ");
         screen.displayDollarAmount(super.getBankDatabase().getAvailableBalance(userAccount));
         screen.displayMessage("\nWhat will be used to pay : $");
-        amount = keypad.getInput();
-        if(amount<0){
-             screen.displayMessage("\nThe value must not be smaller then 0\n");
-        }else{
+        int amount = Integer.MIN_VALUE;
+        while(amount == Integer.MIN_VALUE || amount < 0){
+            screen.displayMessage("\nWhat will be used to pay : $");
+            if(keypad.getKeypad().hasNextInt()){
+                amount = keypad.getKeypad().nextInt(); // input account number                    
+            }else{
+                keypad.getKeypad().nextLine();
+                screen.displayMessageLine("\nInvalid Input\n");
+            }
+        }
         if(amount == 0.0){
             screen.displayMessage("\nTransaction failed\n");
         }else if(super.getBankDatabase().getAvailableBalance(userAccount) >= amount){
@@ -33,7 +39,7 @@ public class PaymentHome extends Transaction{
                 super.getBankDatabase().debit(userAccount, amount);
                 screen.displayMessage("\nTransaction Success\n");
             }
-        }else screen.displayMessage("\nThe value exceeds the limit\n");
+        }else 
+            screen.displayMessage("\nThe value exceeds the limit\n");
     }
-}
 }

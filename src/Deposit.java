@@ -30,12 +30,17 @@ public class Deposit extends Transaction {
     // prompt user to enter a deposit amount in cents 
     private double promptForDepositAmount() {
         
-        // display the prompt
-        getScreen().displayMessage("\nPlease enter a deposit amount in " + 
+        int input = Integer.MIN_VALUE;
+        while(input == Integer.MIN_VALUE){
+            super.getScreen().displayMessage("Please enter a deposit amount in " + 
             "CENTS (or 0 to cancel): ");
-        int input = keypad.getInput(); // receive input of deposit amount
-      
-        // check whether the user canceled or entered a valid amount
+            if(keypad.getKeypad().hasNextInt()){
+                input = keypad.getKeypad().nextInt(); // input account number                    
+            }else{
+                keypad.getKeypad().nextLine();
+                super.getScreen().displayMessageLine("\nInvalid Input\n");
+            }
+        }
         if (input == CANCELED) {
             return CANCELED;
         }

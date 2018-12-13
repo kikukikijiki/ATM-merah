@@ -25,9 +25,16 @@ public class AircraftPayment extends Transaction {
     private int displayaircraftpayment(){
         
         Account acc = super.getBankDatabase().getAccount(super.getAccountNumber());
-        super.getScreen().displayMessage("\nEnter the amount of money to be paid for aircraft ticket in CENTS (or 0 to cancel): ");
-        double input = keypad.getInput(); // receive input of deposit amount
-
+        int input = Integer.MIN_VALUE;
+        while(input == Integer.MIN_VALUE){
+            super.getScreen().displayMessage("\nEnter the amount of money to be paid for aircraft ticket in CENTS (or 0 to cancel): ");
+            if(keypad.getKeypad().hasNextInt()){
+                input = keypad.getKeypad().nextInt(); // input account number                    
+            }else{
+                keypad.getKeypad().nextLine();
+                super.getScreen().displayMessageLine("\nInvalid Input for Account Number\n");
+            }
+        }
         // check whether the user canceled or entered a valid amount
         if (input == CANCELED) {
             return CANCELED;

@@ -15,14 +15,15 @@ public class BalanceInquiry extends Transaction {
         screen.displayMessageLine("\nChoose Your Currency :\n");
         screen.displayMessageLine("1. United States Dollar");
         screen.displayMessageLine("2. Indonesia Rupiah");
-        screen.displayMessage("Choose your input : "); 
-        int input = 0;
-        try{
-            input = keypad.getInput();
-        }catch(Exception e){
-//            System.err.println(e);
-            input = 1;
-//            e.printStackTrace();
+        int input = Integer.MIN_VALUE;
+        while(input == Integer.MIN_VALUE || input > 2 || input < 1){
+            screen.displayMessage("Choose your input : "); 
+            if(keypad.getKeypad().hasNextInt()){
+                input = keypad.getKeypad().nextInt(); // input account number                    
+            }else{
+                keypad.getKeypad().nextLine();
+                screen.displayMessageLine("\nInvalid Input\n");
+            }
         }
         BankDatabase bankDatabase = getBankDatabase();
         double availableBalance = bankDatabase.getAvailableBalance(getAccountNumber());
