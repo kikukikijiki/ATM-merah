@@ -14,7 +14,7 @@ public class Transfer extends Transaction{
 
     @Override
     public void execute() {
-        System.out.print("Masukan Nomer Akun yang akan ditransfer : ");
+        System.out.print("Input Account Number to be transferred : ");
         numberReceiver = keypad.getInput();
         if(super.getBankDatabase().getAccount(numberReceiver) == null){
             System.out.print("Account Doesn't Exist");
