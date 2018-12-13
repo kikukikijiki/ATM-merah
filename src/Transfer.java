@@ -32,7 +32,7 @@ public class Transfer extends Transaction{
                 super.getScreen().displayMessageLine("Your Transaction has been save to Transfer.txt");
                 ceksendnote();
             }else{
-                System.out.print("tidak bisa transfer");
+                System.out.print("Cannot Transfer");
             }
         }  
     }
