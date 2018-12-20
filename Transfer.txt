@@ -1,1 +1,0 @@
-Date : 6/12/2018|Sender : 12345|Receiver : 8765|Amount : 100.0

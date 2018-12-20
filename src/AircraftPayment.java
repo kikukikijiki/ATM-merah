@@ -22,14 +22,16 @@ public class AircraftPayment extends Transaction {
          }
     }
     
-    private int displayaircraftpayment(){
+    private double displayaircraftpayment(){
         
         Account acc = super.getBankDatabase().getAccount(super.getAccountNumber());
-        int input = Integer.MIN_VALUE;
-        while(input == Integer.MIN_VALUE){
+        double input = Double.MIN_VALUE;
+        while(input == Double.MIN_VALUE){
             super.getScreen().displayMessage("\nEnter the amount of money to be paid for aircraft ticket in CENTS (or 0 to cancel): ");
             if(keypad.getKeypad().hasNextInt()){
-                input = keypad.getKeypad().nextInt(); // input account number                    
+                if(keypad.getKeypad().nextInt() >= 0){
+                    input = keypad.getKeypad().nextInt(); // input account number
+                }
             }else{
                 keypad.getKeypad().nextLine();
                 super.getScreen().displayMessageLine("\nInvalid Input for Account Number\n");
@@ -40,7 +42,7 @@ public class AircraftPayment extends Transaction {
             return CANCELED;
         }
         else {
-            return (int) (input / 100); // return dollar amount
+            return (input / 100); // return dollar amount
         }
     }
     

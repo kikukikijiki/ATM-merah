@@ -86,8 +86,6 @@ public class Transfer extends Transaction{
         
         super.getScreen().displayMessage("Type Your Note : ");
         Note = scan.nextLine();
-        acc.addNote(super.getAccountNumber(), Note);
-        
+        acc.addNote(super.getAccountNumber(), Note);   
     }
-    
 }
