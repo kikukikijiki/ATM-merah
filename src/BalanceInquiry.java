@@ -40,9 +40,9 @@ public class BalanceInquiry extends Transaction {
             screen.displayMessageLine("");
         }      
         else if (input == IDR){
-            screen.displayMessage(" - Available balance: "); 
+            screen.displayMessage(" - Saldo yang dapat digunakan: "); 
             screen.displayRupiahAmount(availableBalance);
-            screen.displayMessage("\n - Total balance:     ");
+            screen.displayMessage("\n - Jumlah Saldo yang ada:     ");
             screen.displayRupiahAmount(totalBalance);
             screen.displayMessageLine("");    
         }
