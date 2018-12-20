@@ -28,22 +28,17 @@ public class AircraftPayment extends Transaction {
         double input = Double.MIN_VALUE;
         while(input == Double.MIN_VALUE){
             super.getScreen().displayMessage("\nEnter the amount of money to be paid for aircraft ticket in CENTS (or 0 to cancel): ");
-            if(keypad.getKeypad().hasNextInt()){
-                if(keypad.getKeypad().nextInt() >= 0){
-                    input = keypad.getKeypad().nextInt(); // input account number
-                }
+            if(keypad.getKeypad().hasNextDouble()){
+                input = keypad.getKeypad().nextDouble(); // input account number
+                if(input >= 0)
+                    return input/100;
             }else{
                 keypad.getKeypad().nextLine();
                 super.getScreen().displayMessageLine("\nInvalid Input for Account Number\n");
             }
         }
         // check whether the user canceled or entered a valid amount
-        if (input == CANCELED) {
-            return CANCELED;
-        }
-        else {
-            return (input / 100); // return dollar amount
-        }
+        return input/100;
     }
     
 }
