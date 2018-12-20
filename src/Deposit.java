@@ -15,6 +15,7 @@ public class Deposit extends Transaction {
     @Override
     public void execute() {
         amount = promptForDepositAmount();
+        
         if(amount == CANCELED){
             System.out.println("Canceling Transaction...");
         }else{
@@ -41,11 +42,14 @@ public class Deposit extends Transaction {
                 super.getScreen().displayMessageLine("\nInvalid Input\n");
             }
         }
-        if (input == CANCELED) {
+        if (input<0){
+            keypad.getKeypad().nextLine();
+             super.getScreen().displayMessageLine("\nInvalid Input\n");
+        }else if (input == CANCELED) {
             return CANCELED;
-        }
-        else {
+        }  else {
             return (double) input / 100; // return dollar amount
         }
+        return CANCELED;
     }
-} 
+}
