@@ -30,7 +30,7 @@ public class Pembayaran extends Transaction{
         Account akun = super.getBankDatabase().getAccount(0001);
             double input = Integer.MIN_VALUE;
              while(input == Integer.MIN_VALUE || input < 0){
-               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+               screen.displayMessage("\nEnter the amount to be paid " + 
                 "CENTS (or 0 to cancel): ");
                if(keypad.getKeypad().hasNextInt()){
                    input = keypad.getKeypad().nextInt(); // input account number                    
@@ -49,8 +49,8 @@ public class Pembayaran extends Transaction{
                             super.getScreen().displayMessageLine("\nTransaction failed\n");
                             return CANCELED;
                         }else {
-                            screen.displayMessage("\nAnda berhasil melakukan pembayaran tiket kereta.\n"
-                                 + "NOTE: Tiket yang sudah dibayarkan tidak dapat ditukarkan.");
+                            screen.displayMessage("\nYou have successfully paid for train tickets.\n"
+                                 + "NOTE: Tickets that have been paid cannot be exchanged.");
 
                             return (int) (input / 100); // return dollar amount
                          }
@@ -64,7 +64,7 @@ public class Pembayaran extends Transaction{
         Account akun = super.getBankDatabase().getAccount(0002);
             double input = Integer.MIN_VALUE;
              while(input == Integer.MIN_VALUE || input < 0){
-               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+               screen.displayMessage("\nEnter the amount to be paid " + 
                 "CENTS (or 0 to cancel): ");
                if(keypad.getKeypad().hasNextInt()){
                    input = keypad.getKeypad().nextInt(); // input account number                    
@@ -78,8 +78,8 @@ public class Pembayaran extends Transaction{
                 return CANCELED;
              }
              else {
-                screen.displayMessage("\nSaldo OVO anda sudah ditambahkan.\n"
-                     + "NOTE: Uang yang sudah dibayarkan tidak dapat dikembalikan.");
+                screen.displayMessage("\nYour OVO balance has been added.\n"
+                     + "NOTE: The money paid is non-refundable.");
 
                 return (int) (input / 100); // return dollar amount
              }
@@ -93,7 +93,7 @@ public class Pembayaran extends Transaction{
         Account akun = super.getBankDatabase().getAccount(0003);
             double input = Integer.MIN_VALUE;
              while(input == Integer.MIN_VALUE || input < 0){
-               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+               screen.displayMessage("\nEnter the amount to be paid " + 
                 "CENTS (or 0 to cancel): ");
                if(keypad.getKeypad().hasNextInt()){
                    input = keypad.getKeypad().nextInt(); // input account number                    
@@ -107,7 +107,7 @@ public class Pembayaran extends Transaction{
                 return CANCELED;
              }
              else {
-                screen.displayMessage("\nAnda berhasil melakukan pembayaran listrk.\n");
+                screen.displayMessage("\nYou have successfully made electricity payments.\n");
 
                 return (int) (input / 100); // return dollar amount
              }
@@ -121,7 +121,7 @@ public class Pembayaran extends Transaction{
         Account akun = super.getBankDatabase().getAccount(0004);
             double input = Integer.MIN_VALUE;
              while(input == Integer.MIN_VALUE || input < 0){
-               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+               screen.displayMessage("\nEnter the amount to be paid " + 
                 "CENTS (or 0 to cancel): ");
                if(keypad.getKeypad().hasNextInt()){
                    input = keypad.getKeypad().nextInt(); // input account number                    
@@ -135,7 +135,7 @@ public class Pembayaran extends Transaction{
                 return CANCELED;
              }
              else {
-                screen.displayMessage("\nAnda berhasil melakukan pembelian paket internet.\n");
+                screen.displayMessage("\nYou have successfully purchased an internet package.\n");
 
                 return (int) (input / 100); // return dollar amount
              }
@@ -149,7 +149,7 @@ public class Pembayaran extends Transaction{
         Account akun = super.getBankDatabase().getAccount(0004);
             double input = Integer.MIN_VALUE;
              while(input == Integer.MIN_VALUE || input < 0){
-               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+               screen.displayMessage("\nEnter the amount to be paid " + 
                 "CENTS (or 0 to cancel): ");
                if(keypad.getKeypad().hasNextInt()){
                    input = keypad.getKeypad().nextInt(); // input account number                    
@@ -163,7 +163,7 @@ public class Pembayaran extends Transaction{
                 return CANCELED;
              }
              else {
-                screen.displayMessage("\nAnda berhasil melakukan pembayaran asuransi.\n");
+                screen.displayMessage("\nYou have successfully made insurance payments.\n");
 
                 return (int) (input / 100); // return dollar amount
              }
@@ -177,7 +177,7 @@ public class Pembayaran extends Transaction{
             
              double input = Integer.MIN_VALUE;
              while(input == Integer.MIN_VALUE || input < 0){
-               screen.displayMessage("\nMasukan jumlah yang akan dibayarkan " + 
+               screen.displayMessage("\nEnter the amount to be paid " + 
                 "CENTS (or 0 to cancel): ");
                if(keypad.getKeypad().hasNextInt()){
                    input = keypad.getKeypad().nextInt(); // input account number                    
@@ -191,7 +191,7 @@ public class Pembayaran extends Transaction{
                 return CANCELED;
              }
              else {
-                screen.displayMessage("\nAnda berhasil melakukan pembayaran hotel.\n");
+                screen.displayMessage("\nYou have successfully made a hotel payment.\n");
 
                 return (int) (input / 100); // return dollar amount
              }
@@ -206,11 +206,11 @@ public class Pembayaran extends Transaction{
 
          // display the withdrawal menu
          screen.displayMessageLine("\nPayment Menu :");
-         screen.displayMessageLine("1 - Tiket Kereta");
+         screen.displayMessageLine("1 - Train ticket");
          screen.displayMessageLine("2 - OVO");
-         screen.displayMessageLine("3 - Listrik");
-         screen.displayMessageLine("4 - Paket Internet");
-         screen.displayMessageLine("5 - Asuransi");
+         screen.displayMessageLine("3 - Electricity");
+         screen.displayMessageLine("4 - Internet packages");
+         screen.displayMessageLine("5 - Insurance");
          screen.displayMessageLine("6 - Hotel");
          screen.displayMessageLine("0 - Cancel transaction");
          
